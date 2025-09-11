@@ -40,7 +40,7 @@ app.use(notFound);
 app.use(errorHandler);
 
 // start
-const uri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/pdf_annotator';
+const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017/pdfmapping';
 connectDB(uri).then(() => {
   app.listen(PORT, () => console.log(`✓ Server listening on http://localhost:${PORT}`));
 });
