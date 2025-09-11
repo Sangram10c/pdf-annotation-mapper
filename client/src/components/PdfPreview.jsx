@@ -4,7 +4,8 @@ import { denormalizeBBox } from '../utils/coords.js';
 import { http } from '../api/http.js';
 import { ENDPOINTS } from '../api/endpoints.js';
 
-pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
+// The definitive fix for Vite projects
+pdfjs.GlobalWorkerOptions.workerSrc = new URL('pdfjs-dist/build/pdf.worker.min.mjs', import.meta.url).toString();
 
 function Highlight({ box }) {
   return (

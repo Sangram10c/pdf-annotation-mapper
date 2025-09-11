@@ -7,9 +7,8 @@ import { ENDPOINTS } from '../api/endpoints.js';
 import { http } from '../api/http.js';
 import { rectToBBox, normalizeBBox } from '../utils/coords.js';
 
-import workerSrc from "pdfjs-dist/build/pdf.worker.min.mjs?url";
-
-pdfjs.GlobalWorkerOptions.workerSrc = workerSrc;
+// The definitive fix for Vite projects
+pdfjs.GlobalWorkerOptions.workerSrc = new URL('pdfjs-dist/build/pdf.worker.min.mjs', import.meta.url).toString();
 
 export default function PdfMapper({ pdfId, url, processId, formId }) {
   const [numPages, setNumPages] = useState(0);
